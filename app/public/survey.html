@@ -244,7 +244,7 @@
                         var userData = {
                             name: $("#name").val(),
                             photo: $("#photo").val(),
-                            scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),]
+                            scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
                         }
 
                         console.log(userData.scores);
@@ -256,6 +256,8 @@
 
                         // AJAX post the data to the friends API. 
                         $.post(currentURL + "/api/friends", userData, function (data) {
+
+                            console.log('the data is ' + data);
 
                             // Grab the result from the AJAX post so that the best match's name and photo are displayed.
                             $("#matchName").text(data.name);
@@ -269,44 +271,20 @@
                         });
                             var currentURL = window.location.origin;
 
-                             $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-                                    .done(function (tableData) {
+                            //  $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+                            //         .done(function (tableData) {
 
-                                        console.log(tableData);
-                                        console.log(tableData[0].scores);
-                                        console.log(tableData[0].scores.length);
+                            //             console.log(tableData);
+                            //             console.log(tableData[0].scores);
+                            //             console.log(tableData[0].scores.length);
                                         
 
-                                        console.log(userData.scores);
+                            //             console.log(userData.scores);
 
-                                        //logic for the matchmaking
-
-                                        let matchResults = [];
-
-                                            for (let i = 0; i < tableData.length -1 ; i++) {
-                                                let difference = 0;
-                                                let friendScores = tableData[i].scores;
-                                                for (let j = 0; j < friendScores.length; j++) {
-                                                    let matchEquation = userData.scores[i] - friendScores[j];
-                                                    if (userData.scores[i] >= friendScores[j] || userData.scores[i] <= friendScores[j]) {
-                                                        difference += Math.abs(matchEquation);
-                                                    }
-                                                }
-                                                matchResults.push(difference);
-                                            }
-                                            Array.min = function (matchResults) {
-                                                return Math.min.apply(Math, matchResults);
-                                            };
-
-                                            var minimum = Array.min(matchResults);
-
-                                            let matchNUmber = matchResults.indexOf(minimum);
-
-                                            console.log(matchNUmber);
-                                            console.log(tableData[matchNUmber].name);
+                                       
 
 
-                                    });
+                            //         });
 
                             
                         }

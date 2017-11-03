@@ -67,16 +67,16 @@ let friendsArray = [
         "name":"Vision",
         "photo":"https://images-na.ssl-images-amazon.com/images/I/41LMPL5Ll5L._SY450_.jpg",
         "scores":[
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
           ]
       }
 ];
