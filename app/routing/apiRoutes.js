@@ -19,10 +19,14 @@ module.exports = function(app) {
     //logic for the matchmaking
 
     let matchResults = [];
+    let u = friendData.length - 1;
+    let userData = friendData[u];
 
-    for (let i = 0; i < tableData.length - 1; i++) {
+    console.log(friendData);
+
+    for (let i = 0; i < friendData.length - 1; i++) {
         let difference = 0;
-        let friendScores = tableData[i].scores;
+        let friendScores = friendData[i].scores;
         console.log("friendscors is " + friendScores);
         for (let j = 0; j < friendScores.length; j++) {
         let matchEquation = userData.scores[i] - friendScores[j];
@@ -41,8 +45,8 @@ module.exports = function(app) {
     let matchNUmber = matchResults.indexOf(minimum);
 
     console.log(matchNUmber);
-    console.log(tableData[matchNUmber].name);
-    res.json(tableData[matchNUmber]);
+    console.log(friendData[matchNUmber].name);
+    res.json(friendData[matchNUmber]);
     });
 
  
